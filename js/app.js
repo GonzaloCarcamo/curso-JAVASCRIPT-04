@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => { //Una vez cargado el HTML,
 // Event Listeners para los select de búsqueda
 marca.addEventListener('change', e => {
     datosBusqueda.marca = e.target.value;
+
+    filtrarAuto();
 })
 
 year.addEventListener('change', e => {
@@ -57,8 +59,6 @@ transmision.addEventListener('change', e => {
 
 color.addEventListener('change', e => {
     datosBusqueda.color = e.target.value;
-
-    console.log(datosBusqueda);
 })
 
 //Funciones
@@ -90,6 +90,19 @@ function llenarSelect() {
     }
 }
 
+// Función que filtra en base a la búsqueda
+function filtrarAuto() {
+    const resultado = autos.filter( filtarMarca );
+}
+
+function filtarMarca(auto) {
+    const { marca } = datosBusqueda;
+
+    if( marca ) {
+        return auto.marca === marca;
+    }
+    return auto;
+}
 
 
 
@@ -108,5 +121,9 @@ Flujo de la aplicación:
 3. Se genera un <p> por cada elemento y se muestra en el HTML dentro del <div> con id="resultado"
 4. Luego de generan los años dentro del select a través de la función llenarSelect().
 5. Se genera un objeto con todos los campos
+6. Al seleccionar los valores de forma manual, dichos valores son agregados al objeto
+7. Cuando se selecciona la marca, se llama la función filtrarAuto(), ocurre un filter de la iteración de autos
+   que se genera en la función filtrarMarca. Si se selecciona la marca, se filtra. En caso contrario, trae todos los autos.
+
 
 */
