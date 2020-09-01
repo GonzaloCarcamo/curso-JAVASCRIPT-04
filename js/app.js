@@ -1,10 +1,25 @@
 //Variables
-const resultado = document.querySelector('#resultado');
+const marca = document.querySelector('#marca');
 const year = document.querySelector('#year');
-
+const minimo = document.querySelector('#minimo');
+const maximo = document.querySelector('#maximo');
+const puertas = document.querySelector('#puertas');
+const transmision = document.querySelector('#transmision');
+const color = document.querySelector('#color');
+const resultado = document.querySelector('#resultado');
 const max = new Date().getFullYear(); // Año máximo
 const min = max - 10; // año mínimo
 
+// Generar un objeto con la búsqueda
+const datosBusqueda = {
+    marca: '',
+    year: '',
+    minimo: '',
+    maximo: '',
+    puertas: '',
+    transmision: '',
+    color: ''
+}
 
 //Eventos
 
@@ -15,6 +30,36 @@ document.addEventListener('DOMContentLoaded', () => { //Una vez cargado el HTML,
     llenarSelect();
 })
 
+// Event Listeners para los select de búsqueda
+marca.addEventListener('change', e => {
+    datosBusqueda.marca = e.target.value;
+})
+
+year.addEventListener('change', e => {
+    datosBusqueda.year = e.target.value;
+})
+
+minimo.addEventListener('change', e => {
+    datosBusqueda.minimo = e.target.value;
+})
+
+maximo.addEventListener('change', e => {
+    datosBusqueda.maximo = e.target.value;
+})
+
+puertas.addEventListener('change', e => {
+    datosBusqueda.puertas = e.target.value;
+})
+
+transmision.addEventListener('change', e => {
+    datosBusqueda.transmision = e.target.value;
+})
+
+color.addEventListener('change', e => {
+    datosBusqueda.color = e.target.value;
+
+    console.log(datosBusqueda);
+})
 
 //Funciones
 
@@ -62,6 +107,6 @@ Flujo de la aplicación:
 2. Esta función itera el array de objetos "autos". 
 3. Se genera un <p> por cada elemento y se muestra en el HTML dentro del <div> con id="resultado"
 4. Luego de generan los años dentro del select a través de la función llenarSelect().
-
+5. Se genera un objeto con todos los campos
 
 */
